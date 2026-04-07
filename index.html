@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>創業者心態覆盤清單 · Bonheur Aura</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:#f5f5f0;
+    min-height:100vh;
+    display:flex;justify-content:center;
+    padding:24px 16px 48px;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;
+    color:#1a1a1a;
+  }
+  .wrap{width:100%;max-width:480px}
+  .top-tag{
+    display:inline-block;font-size:11px;font-weight:500;
+    letter-spacing:.06em;color:#993556;background:#fbeaf0;
+    border-radius:20px;padding:3px 12px;margin-bottom:14px;
+  }
+  .title{font-size:22px;font-weight:500;color:#1a1a1a;line-height:1.4;margin:0 0 5px}
+  .subtitle{font-size:13px;color:#888;margin:0 0 20px;line-height:1.6}
+  .prog-bar-bg{background:#e8e8e8;border-radius:3px;height:4px;margin-bottom:6px;overflow:hidden}
+  .prog-bar-fill{height:100%;background:linear-gradient(90deg,#B8922A,#E4C46A);border-radius:3px;transition:width .3s ease;width:0%}
+  .prog-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+  .prog-label{font-size:11px;color:#999;letter-spacing:.04em}
+  .prog-count{font-size:12px;font-weight:500;color:#B8922A}
+  .reset-btn{font-size:11px;color:#aaa;background:none;border:none;cursor:pointer;text-decoration:underline;padding:0;font-family:inherit}
+  .section-lbl{font-size:11px;font-weight:500;color:#aaa;letter-spacing:.08em;margin:0 0 10px;display:flex;align-items:center;gap:7px}
+  .section-lbl::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;flex-shrink:0}
+  .block{background:#fff;border:0.5px solid #e8e8e8;border-radius:12px;padding:16px 20px;margin-bottom:12px}
+  .row{
+    display:flex;align-items:flex-start;gap:10px;
+    padding:9px 0;border-bottom:0.5px solid #f0f0f0;
+    cursor:pointer;-webkit-tap-highlight-color:transparent;
+  }
+  .row:last-child{border-bottom:none}
+  .row:active{background:#fafafa}
+  .cb{
+    width:17px;height:17px;border-radius:4px;
+    border:1.5px solid #ccc;flex-shrink:0;margin-top:2px;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .15s,border-color .15s;
+  }
+  .cb.on{background:#7f77dd;border-color:#7f77dd}
+  .cb.on::after{
+    content:'';display:block;width:9px;height:5px;
+    border-left:2px solid #fff;border-bottom:2px solid #fff;
+    transform:rotate(-45deg) translateY(-1px);
+  }
+  .q{font-size:13px;color:#1a1a1a;line-height:1.65;flex:1;transition:color .2s}
+  .q.done{color:#bbb;text-decoration:line-through;text-decoration-color:#ccc}
+  .note{font-size:11px;color:#aaa;margin-top:2px;line-height:1.5}
+  .note.done{opacity:.5}
+  .dot-purple::before{background:#7f77dd}
+  .dot-pink::before{background:#d4537e}
+  .dot-green::before{background:#1d9e75}
+  .dot-amber::before{background:#ba7517}
+    display:none;background:#f0eefd;border-radius:10px;
+    padding:16px 18px;margin:4px 0 12px;text-align:center;
+    font-size:13px;color:#3c3489;line-height:1.8;
+  }
+  .affirm.show{display:block}
+  .footer{margin-top:18px;padding-top:14px;border-top:0.5px solid #e8e8e8;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+  .footer-left{flex:1}
+  .footer-right{text-align:right;flex-shrink:0}
+  .footer-name{font-size:12px;font-weight:500;color:#555;display:block;margin-bottom:5px;letter-spacing:.03em}
+  .footer-tagline{font-size:11px;color:#aaa;display:block;line-height:1.8;letter-spacing:.02em}
+  .footer-brand{font-size:12px;font-weight:500;color:#993556;display:block;line-height:1.8;letter-spacing:.03em}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top-tag">創業者心態覆盤清單</div>
+  <div class="title">卡關了？<br>先做這 18 個自我檢查</div>
+  <div class="subtitle">低潮不是終點，是你需要重整的訊號。<br>認真回答每一題，比換策略更有效。</div>
+
+  <div class="prog-bar-bg"><div class="prog-bar-fill" id="pbar"></div></div>
+  <div class="prog-meta">
+    <span class="prog-label">完成進度</span>
+    <span class="prog-count" id="pcnt">0 / 18</span>
+    <button class="reset-btn" onclick="resetAll()">重置</button>
+  </div>
+
+  <div class="section-lbl dot-purple">一｜先看清楚你在哪裡</div>
+  <div class="block">
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">我卡關是「不知道怎麼做」，還是「知道但沒有去做」？</div><div class="note">兩種卡關，解法完全不同</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">這個月花最多時間的事，真的是最重要的嗎？</div><div class="note">忙碌感不等於前進感</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">我最害怕的事，是真實風險還是自己放大的？</div><div class="note">寫下來，恐懼就會縮小</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">上一次真心為自己事業感到驕傲，是什麼時候？</div><div class="note">低潮最容易忘記自己做對過的事</div></div></div>
+  </div>
+
+  <div class="section-lbl dot-pink">二｜能量場誠實檢查</div>
+  <div class="block">
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">對自己的事業，是「想靠近」還是「想逃避」的感覺？</div><div class="note">逃避感是能量耗盡的訊號，不是你不適合</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">我內心深處，真的相信自己值得賺到那個數字嗎？</div><div class="note">金錢能量的根源在這裡</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">最近有沒有讓自己「什麼都不做」讓能量回來的時間？</div><div class="note">持續輸出沒有補充，任何人都會斷電</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">我對自己說的那些話，如果是朋友說的，我還願意跟她在一起嗎？</div><div class="note">內在批評比任何外部阻力都更傷</div></div></div>
+  </div>
+
+  <div class="section-lbl dot-green">三｜行動方向核對</div>
+  <div class="block">
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">這個月最需要解決的一件事，我真的在解決它嗎？</div><div class="note">大多數卡關來自優先順序錯誤</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">我的受眾是誰？最近所有行動都是為了那個人嗎？</div><div class="note">模糊的受眾讓所有努力都打折</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">如果只能做三件事讓業績好轉，我選哪三件？做了嗎？</div><div class="note">這題答案通常讓你刪掉 80% 的待辦</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">我現在需要「更多資訊」，還是「開始行動」？</div><div class="note">不斷學習而不行動，也是一種拖延</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">三個月後，我希望能說「還好那時候我做了＿＿」</div><div class="note">從終點想起點，答案更清晰</div></div></div>
+  </div>
+
+  <div class="section-lbl dot-amber">四｜回到初心</div>
+  <div class="block">
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">我當初為什麼要開始？那個理由現在還有效嗎？</div><div class="note">如果還有效，它就是你最需要的燃料</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">我最想幫助的那種客人，她知道我可以幫她嗎？</div><div class="note">使命感具體化才能變成行動</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">這個低潮，六個月後的我會怎麼看待它？</div><div class="note">時間距離會改變你對困境的詮釋</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">今天，讓自己感覺「我還在前進」的一件小事是什麼？</div><div class="note">不需要大動作，動起來最重要</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">如果有人陪著我走這段路，我的狀態會不一樣嗎？</div><div class="note">創業不需要單打獨鬥</div></div></div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">
+      <span class="footer-name">Bonheur｜水晶創業培癒所</span>
+      <span class="footer-tagline">創業的路不用一個人摸索</span>
+      <span class="footer-tagline">在這裡分享真實走過的路</span>
+      <span class="footer-tagline">讓彼此少走彎路，走得更穩更長久</span>
+    </div>
+    <div class="footer-right">
+      <span class="footer-brand">@bonheur.aura</span>
+      <span class="footer-brand">@bonheur.yuki</span>
+    </div>
+  </div>
+
+</div>
+<script>
+  const T=18;
+  function tog(row){
+    const cb=row.querySelector('.cb'),q=row.querySelector('.q'),note=row.querySelector('.note');
+    cb.classList.toggle('on');
+    q.classList.toggle('done');
+    note.classList.toggle('done');
+    const n=document.querySelectorAll('.cb.on').length;
+    document.getElementById('pcnt').textContent=n+' / '+T;
+    document.getElementById('pbar').style.width=Math.round(n/T*100)+'%';
+  }
+  function resetAll(){
+    document.querySelectorAll('.cb').forEach(e=>e.classList.remove('on'));
+    document.querySelectorAll('.q').forEach(e=>e.classList.remove('done'));
+    document.querySelectorAll('.note').forEach(e=>e.classList.remove('done'));
+    document.getElementById('pcnt').textContent='0 / '+T;
+    document.getElementById('pbar').style.width='0%';
+  }
+</script>
+</body>
+</html>
