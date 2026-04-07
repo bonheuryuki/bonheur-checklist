@@ -51,7 +51,7 @@
     transform:rotate(-45deg) translateY(-1px);
   }
   .q{font-size:13px;color:#1a1a1a;line-height:1.65;flex:1;transition:color .2s}
-  .q.done{color:#bbb;text-decoration:line-through;text-decoration-color:#ccc}
+  .q.done{color:#bbb}
   .note{font-size:11px;color:#aaa;margin-top:2px;line-height:1.5}
   .note.done{opacity:.5}
   .dot-purple::before{background:#7f77dd}
@@ -63,74 +63,82 @@
     font-size:13px;color:#3c3489;line-height:1.8;
   }
   .affirm.show{display:block}
+  .cta-block{background:#fbeaf0;border-radius:12px;padding:24px 20px;margin-top:8px;margin-bottom:16px;text-align:center}
+  .cta-title{font-size:15px;font-weight:500;color:#1a1a1a;line-height:1.6;margin-bottom:8px}
+  .cta-sub{font-size:12px;color:#888;line-height:1.7;margin-bottom:18px}
+  .cta-btns{display:flex;flex-direction:column;gap:10px}
+  .cta-btn{display:block;padding:12px 16px;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;text-align:center;transition:opacity .15s}
+  .cta-btn:active{opacity:.75}
+  .cta-primary{background:#993556;color:#fff}
+  .cta-secondary-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .cta-secondary{background:#fff;color:#993556;border:1px solid #f4c0d1}
   .footer{margin-top:18px;padding-top:14px;border-top:0.5px solid #e8e8e8;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
   .footer-left{flex:1}
   .footer-right{text-align:right;flex-shrink:0}
   .footer-name{font-size:12px;font-weight:500;color:#555;display:block;margin-bottom:5px;letter-spacing:.03em}
   .footer-tagline{font-size:11px;color:#aaa;display:block;line-height:1.8;letter-spacing:.02em}
-  .footer-brand{font-size:12px;font-weight:500;color:#993556;display:block;line-height:1.8;letter-spacing:.03em}
+  .footer-brand{font-size:12px;font-weight:500;color:#993556;display:block;line-height:1.8;letter-spacing:.03em;text-decoration:none}
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <div class="top-tag">創業者心態覆盤清單</div>
-  <div class="title">卡關了？<br>先做這 18 個自我檢查</div>
-  <div class="subtitle">低潮不是終點，是你需要重整的訊號。<br>認真回答每一題，比換策略更有效。</div>
+  <div class="title">你現在卡在哪裡？<br>勾出最貼近你的狀態</div>
+  <div class="subtitle">不用全部勾，哪個最像你現在就勾哪個<br>勾完看小字，你會更清楚自己的問題在哪</div>
 
   <div class="prog-bar-bg"><div class="prog-bar-fill" id="pbar"></div></div>
   <div class="prog-meta">
-    <span class="prog-label">完成進度</span>
+    <span class="prog-label">已勾選狀態</span>
     <span class="prog-count" id="pcnt">0 / 18</span>
     <button class="reset-btn" onclick="resetAll()">重置</button>
   </div>
 
-  <div class="section-lbl dot-purple">一｜先看清楚你在哪裡</div>
+  <div class="section-lbl dot-purple">一｜我不知道自己適不適合</div>
   <div class="block">
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">我卡關是「不知道怎麼做」，還是「知道但沒有去做」？</div><div class="note">兩種卡關，解法完全不同</div></div></div>
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">這個月花最多時間的事，真的是最重要的嗎？</div><div class="note">忙碌感不等於前進感</div></div></div>
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">我最害怕的事，是真實風險還是自己放大的？</div><div class="note">寫下來，恐懼就會縮小</div></div></div>
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">上一次真心為自己事業感到驕傲，是什麼時候？</div><div class="note">低潮最容易忘記自己做對過的事</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">我常常覺得自己不夠好，不配做這件事</div><div class="note">這不是事實，是長期缺乏正向回饋讓你開始懷疑自己，跟能力無關</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">看到別人做得好，覺得自己永遠做不到那樣</div><div class="note">比較心是創業路上最消耗能量的事，她的現在不是你的起點</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">不相信自己值得收那個價格</div><div class="note">定價的底氣來自對自己價值的相信，這個相信是可以被建立的</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">有想法，但一直說服自己「時機還沒到」</div><div class="note">等待完美時機是一種恐懼的偽裝，真正的問題是還沒有人告訴你「你可以了」</div></div></div>
   </div>
 
-  <div class="section-lbl dot-pink">二｜能量場誠實檢查</div>
+  <div class="section-lbl dot-pink">二｜我很努力，但感覺沒有用</div>
   <div class="block">
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">對自己的事業，是「想靠近」還是「想逃避」的感覺？</div><div class="note">逃避感是能量耗盡的訊號，不是你不適合</div></div></div>
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">我內心深處，真的相信自己值得賺到那個數字嗎？</div><div class="note">金錢能量的根源在這裡</div></div></div>
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">最近有沒有讓自己「什麼都不做」讓能量回來的時間？</div><div class="note">持續輸出沒有補充，任何人都會斷電</div></div></div>
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">我對自己說的那些話，如果是朋友說的，我還願意跟她在一起嗎？</div><div class="note">內在批評比任何外部阻力都更傷</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">付出很多，但結果和努力完全不成正比</div><div class="note">努力方向錯了比不努力更消耗人，問題通常不是你不夠拚，是沒有人幫你看清楚卡在哪</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">每天都很忙，但不知道自己在往哪裡走</div><div class="note">忙碌感不等於前進感，缺少方向感是創業最深的疲憊來源之一</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">學了很多，但就是沒辦法讓事情動起來</div><div class="note">持續學習卻沒有行動，通常是內心還有一個地方沒有準備好，不是能力的問題</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">覺得自己在原地踏步，看不到任何進展</div><div class="note">原地感會慢慢吃掉一個人的熱情，你最需要的是一個客觀的視角幫你看見自己的移動</div></div></div>
   </div>
 
-  <div class="section-lbl dot-green">三｜行動方向核對</div>
+  <div class="section-lbl dot-green">三｜我的能量和狀態撐不住了</div>
   <div class="block">
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">這個月最需要解決的一件事，我真的在解決它嗎？</div><div class="note">大多數卡關來自優先順序錯誤</div></div></div>
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">我的受眾是誰？最近所有行動都是為了那個人嗎？</div><div class="note">模糊的受眾讓所有努力都打折</div></div></div>
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">如果只能做三件事讓業績好轉，我選哪三件？做了嗎？</div><div class="note">這題答案通常讓你刪掉 80% 的待辦</div></div></div>
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">我現在需要「更多資訊」，還是「開始行動」？</div><div class="note">不斷學習而不行動，也是一種拖延</div></div></div>
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">三個月後，我希望能說「還好那時候我做了＿＿」</div><div class="note">從終點想起點，答案更清晰</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">對自己的事業越來越提不起勁，很想逃避</div><div class="note">這不是你不適合，是能量長期輸出沒有補充，創業者也需要被照顧</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">一遇到挫折就情緒崩潰，很難快速回來</div><div class="note">情緒容易被影響，通常代表內在的穩定系統還沒建立，這是可以練習的</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">內心有很多焦慮和恐懼，但說不清楚是什麼</div><div class="note">說不清楚的恐懼往往比具體的問題更消耗人，把它說出來是第一步</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">有時候會覺得，放棄算了，這樣太累了</div><div class="note">想放棄的念頭出現，通常是在告訴你需要被支撐，而不是真的要放棄</div></div></div>
   </div>
 
-  <div class="section-lbl dot-amber">四｜回到初心</div>
+  <div class="section-lbl dot-amber">四｜我一個人走，很孤單很迷茫</div>
   <div class="block">
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">我當初為什麼要開始？那個理由現在還有效嗎？</div><div class="note">如果還有效，它就是你最需要的燃料</div></div></div>
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">我最想幫助的那種客人，她知道我可以幫她嗎？</div><div class="note">使命感具體化才能變成行動</div></div></div>
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">這個低潮，六個月後的我會怎麼看待它？</div><div class="note">時間距離會改變你對困境的詮釋</div></div></div>
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">今天，讓自己感覺「我還在前進」的一件小事是什麼？</div><div class="note">不需要大動作，動起來最重要</div></div></div>
-    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">如果有人陪著我走這段路，我的狀態會不一樣嗎？</div><div class="note">創業不需要單打獨鬥</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">身邊沒有人理解我在做的事，很孤單</div><div class="note">創業的孤獨感是真實的，但它不代表你走錯了，只是你需要找到同頻的人</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">遇到問題不知道能問誰，只能自己硬撐</div><div class="note">一個人摸索的時間成本非常高，有人可以討論可以讓你少走很多彎路</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">不知道自己現在走的方向是不是對的</div><div class="note">方向感的缺失來自缺少參照，走在一個社群裡會讓你更清楚自己在哪裡</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">很怕走了很久，最後發現全部都走錯了</div><div class="note">這個恐懼讓很多人原地不動，但走錯了可以修正，原地才是真正的損失</div></div></div>
+    <div class="row" onclick="tog(this)"><div class="cb"></div><div><div class="q">希望有一個人可以陪我一起走這段路</div><div class="note">你不是在要求太多，你只是還沒找到對的地方</div></div></div>
   </div>
 
-  <div class="footer">
-    <div class="footer-left">
-      <span class="footer-name">Bonheur｜水晶創業培癒所</span>
-      <span class="footer-tagline">創業的路不用一個人摸索</span>
-      <span class="footer-tagline">在這裡分享真實走過的路</span>
-      <span class="footer-tagline">讓彼此少走彎路，走得更穩更長久</span>
-    </div>
-    <div class="footer-right">
-      <span class="footer-brand">@bonheur.aura</span>
-      <span class="footer-brand">@bonheur.yuki</span>
+  <div class="cta-block">
+    <div class="cta-title">你勾的那些，就是你現在最需要被幫到的地方</div>
+    <div class="cta-sub">你正在經歷的一切，我都走過<br>所以我們建立了這個地方<br>讓你不再一個人摸索<br>有人陪你走，走得更穩、更有力量</div>
+    <div class="cta-btns">
+      <a class="cta-btn cta-primary" href="https://www.skool.com/bonheur-6852/about?ref=c2191dad56a742a69366980a8ce3a112" target="_blank">免費加入 Bonheur｜水晶創業培癒所 →</a>
+      <div class="cta-secondary-row">
+        <a class="cta-btn cta-secondary" href="https://www.instagram.com/bonheur.aura?igsh=NXl2anlqeG44ZGky&utm_source=qr" target="_blank">看品牌成果</a>
+        <a class="cta-btn cta-secondary" href="https://www.instagram.com/bonheur.yuki?igsh=dmhpYzdiNGxyZXR3&utm_source=qr" target="_blank">想找人聊聊，我在這裡</a>
+      </div>
     </div>
   </div>
+
 
 </div>
 <script>
